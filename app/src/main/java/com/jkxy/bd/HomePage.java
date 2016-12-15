@@ -50,14 +50,4 @@ public class HomePage extends Fragment {
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
         listView.setAdapter(adapter);
     }
-    /*public Toolbar initToolbar(int title) {
-        AppCompatActivity mAppCompatActivity = (AppCompatActivity) mActivity;
-
-        mAppCompatActivity.setSupportActionBar(toolbar);
-        ActionBar actionBar = mAppCompatActivity.getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(false);
-        }
-        return toolbar;
-    }*/
 }
