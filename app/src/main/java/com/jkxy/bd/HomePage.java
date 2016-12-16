@@ -2,10 +2,7 @@ package com.jkxy.bd;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,6 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Administrator on 2016/12/14.
@@ -22,18 +26,18 @@ import android.widget.ListView;
 public class HomePage extends Fragment {
     ListView listView;
     ArrayAdapter<String> adapter;
-    View view;
+    View view,view1;
     Activity mActivity;
     AppCompatActivity mAppCompatActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view1=inflater.inflate(R.layout.home_page_fragment_listview, container, false);
         view = inflater.inflate(R.layout.home_page_fragment, container, false);
+
         initListView();
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolBar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        setHasOptionsMenu(true);
-        toolbar.setTitle("");
+        initToolbar();
+
         return view;
     }
 
@@ -44,10 +48,33 @@ public class HomePage extends Fragment {
 
     }
 
+    public void initToolbar() {
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolBar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        setHasOptionsMenu(true);
+    }
+
     public void initListView() {
         listView = (ListView) view.findViewById(R.id.listView);
-        String[] data = {"adwqsx", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa"};
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
-        listView.setAdapter(adapter);
+
+        /*String[] data = {"adwqsx", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa"};
+        adapter = new ArrayAdapter<String>(getActivity(), R.layout.home_page_fragment_listview);*/
+        String[] str={"title"};
+        int[] id={R.id.shopTitle};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),setData(),R.layout.home_page_fragment_listview,str,id);
+        listView.setAdapter(simpleAdapter);
+    }
+
+    public List<Map<String, Object>> setData() {
+        ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        Map<String, Object> map = null;
+        for (int i = 0; i < 20; i++) {
+            map = new HashMap<>();
+            map.put("title", "麻辣烫" + i);
+            list.add(map);
+        }
+        return list;
+
+
     }
 }
