@@ -26,13 +26,13 @@ import java.util.Objects;
 public class HomePage extends Fragment {
     ListView listView;
     ArrayAdapter<String> adapter;
-    View view,view1;
+    View view, view1;
     Activity mActivity;
     AppCompatActivity mAppCompatActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view1=inflater.inflate(R.layout.home_page_fragment_listview, container, false);
+        view1 = inflater.inflate(R.layout.home_page_fragment_listview, container, false);
         view = inflater.inflate(R.layout.home_page_fragment, container, false);
 
         initListView();
@@ -56,21 +56,27 @@ public class HomePage extends Fragment {
 
     public void initListView() {
         listView = (ListView) view.findViewById(R.id.listView);
-
-        /*String[] data = {"adwqsx", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa", "dqweqa"};
-        adapter = new ArrayAdapter<String>(getActivity(), R.layout.home_page_fragment_listview);*/
-        String[] str={"title"};
-        int[] id={R.id.shopTitle};
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(),setData(),R.layout.home_page_fragment_listview,str,id);
+        String[] str = {"title", "picture"};
+        int[] id = {R.id.shopTitle, R.id.shopImage};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), setData(), R.layout.home_page_fragment_listview, str, id);
         listView.setAdapter(simpleAdapter);
     }
 
     public List<Map<String, Object>> setData() {
         ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = null;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             map = new HashMap<>();
-            map.put("title", "麻辣烫" + i);
+            map.put("title", "麻辣烫");
+            map.put("picture", R.drawable.shopone);
+            list.add(map);
+            map = new HashMap<>();
+            map.put("title", "一洋码头");
+            map.put("picture", R.drawable.shoptwo);
+            list.add(map);
+            map = new HashMap<>();
+            map.put("title", "momo花店");
+            map.put("picture", R.drawable.shopthree);
             list.add(map);
         }
         return list;
