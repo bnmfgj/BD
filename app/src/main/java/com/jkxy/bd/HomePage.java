@@ -25,14 +25,9 @@ import java.util.Objects;
  */
 public class HomePage extends Fragment {
     ListView listView;
-    ArrayAdapter<String> adapter;
-    View view, view1;
-    Activity mActivity;
-    AppCompatActivity mAppCompatActivity;
-
+    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view1 = inflater.inflate(R.layout.home_page_fragment_listview, container, false);
         view = inflater.inflate(R.layout.home_page_fragment, container, false);
 
         initListView();

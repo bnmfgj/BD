@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">百度外卖</string>
     <string name="tip">起送￥20 | 配送￥5 | 平均45分钟</string>
+    <string name="order">订单</string>
 </resources>
