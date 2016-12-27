@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return new HomePage();
                 case 1:
-                    return new PlaceholderFragment();
+                    return new OrderPage();
                 case 2:
                     return new PlaceholderFragment();
             }
