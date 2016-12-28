@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     return new OrderPage();
                 case 2:
-                    return new PlaceholderFragment();
+                    return new SignInFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
